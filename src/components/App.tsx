@@ -9,6 +9,7 @@ import { Home } from './Home';
 import { Profile } from './Profile';
 import { Hotels } from './hotels/hotels'
 import { DataService } from '../services/DataService';
+import { CreateHotel } from "../components/hotels/CreateHotel";
 interface AppState{
   user: User | undefined
 }
@@ -28,11 +29,11 @@ export class App extends React.Component <{}, AppState>{
   }
 
   //user function
-  private setUser(user: User) {
+    private async setUser(user: User){
     this.setState({
       user: user
     })
-    console.log('setting the user' + user);
+    await this.authService.getAWSTemporaryCreds(user.cognitoUser);
   }
 
   render() {
@@ -52,6 +53,9 @@ export class App extends React.Component <{}, AppState>{
               <Route exact path='/hotels'>
               <Hotels dataService={this.dataService}/>
                 </Route>
+                <Route exact path='/createHotel'>
+                <CreateHotel dataService={this.dataService}/>
+              </Route>
             </Switch>
           </div>
 

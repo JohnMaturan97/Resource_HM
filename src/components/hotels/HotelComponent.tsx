@@ -6,15 +6,15 @@ interface HotelComponentProps {
     hotelId: string,
     name: string,
     location: string,
-    photoUrl?: string,
+    photoURL?: string,
     reserveHotel: (hotelId: string) => void
 }
 
 export class HotelComponent extends Component<HotelComponentProps> {
 
     private renderImage(){
-        if (this.props.photoUrl) {
-            return <img src={this.props.photoUrl} alt=''/>
+        if (this.props.photoURL) {
+            return <img src={this.props.photoURL} alt=''/>
         } else {
             return <img src={genericImage} alt=''/>
         }

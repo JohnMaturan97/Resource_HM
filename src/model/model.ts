@@ -1,7 +1,8 @@
+import { CognitoUser } from '@aws-amplify/auth';
 
 export interface User {
     userName : String,
-    email : String
+    cognitoUser: CognitoUser
 }
 export interface UserAttribute {
     Name: string,
@@ -12,5 +13,5 @@ export interface Hotel {
     hotelId: string,
     name: string,
     location: string,
-    photoUrl?: string,
+    photoURL?: string,
 }

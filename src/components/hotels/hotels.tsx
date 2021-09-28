@@ -3,6 +3,7 @@ import { Hotel } from '../../model/model';
 import { DataService } from '../../services/DataService';
 import { HotelComponent } from './HotelComponent';
 import { ConfromModalComponent } from './ConfirmModalComponent';
+import { Link } from "react-router-dom";
 interface HotelsState {
     hotels: Hotel[],
     showModal: boolean,
@@ -39,12 +40,12 @@ export class Hotels extends Component<HotelsProps, HotelsState> {
         if (reservationResult) {
             this.setState({
                 showModal: true,
-                modalContent: `You reserved the space with id ${hotelId} and got the reservation number ${reservationResult}`
+                modalContent: `You reserved the hotel with id ${hotelId} and got the reservation number ${reservationResult}`
             })
         } else {
             this.setState({
                 showModal: true,
-                modalContent: `You can't reserve the space with id ${hotelId}`
+                modalContent: `You can't reserve the hotel with id ${hotelId}`
             })
         }
      }
@@ -56,6 +57,7 @@ export class Hotels extends Component<HotelsProps, HotelsState> {
                 <HotelComponent
                     location={hotel.location}
                     name={hotel.name}
+                    photoURL={hotel.photoURL}
                     hotelId={hotel.hotelId}
                     reserveHotel={this.reserveHotel}
                 />
@@ -76,6 +78,7 @@ export class Hotels extends Component<HotelsProps, HotelsState> {
         return (
             <div>
                 <h2>Welcome to the Hotels page!</h2>
+                <Link to='/createHotel'>Create Hotel</Link><br></br>
                 {this.renderHotels()}
                 <ConfromModalComponent
                     close={this.closeModal}
