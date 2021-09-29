@@ -61,18 +61,86 @@ export class Login extends React.Component <LoginProps, LoginState> {
             if (this.state.loginSuccessfull) {
                 loginMessage = <label> Login was a Success!</label>
             } else {
-                loginMessage = <label> Login was a Failure!</label>
+                loginMessage = <label color="red"> Login was a Failure!</label>
             }
         }
 
-        return <div className="">
-           <h2>Login Page</h2> 
-            <form onSubmit={e => this.handleSubmit(e)}>
-                <input value={this.state.userName} onChange = { e => this.setUsername(e)} /><br/>
-                <input value={this.state.password} onChange = { e => this.setPassword(e)} type='password'/><br/>
-                <input type='submit' value='Login'/>
+        return <div className="container">
+       
+         <div id="left" className="form-container">
+             <form className="register-form" onSubmit={e => this.handleSubmit(e)}>
+           <h3> LOGIN </h3>
+     
+                <input 
+                 id="name"
+                 className="form-field"
+                 type="text"
+                 placeholder="Name"
+                 name="Name"
+                value={this.state.userName} 
+                onChange = { e => this.setUsername(e)} 
+                   />
+             <br/>
+
+
+                <input 
+                id="password"
+                className="form-field"
+                placeholder="Password"
+                name="Password"
+                value={this.state.password} 
+                onChange = { e => this.setPassword(e)} 
+                type='password'
+                />
+         
+                <input id="button" type='submit' value='Login'/> {loginMessage}
             </form>
-            {loginMessage}
-        </div>
+</div>
+
+
+<div id="right" className="form-container">
+<h3>  ------ </h3>
+            <form className="register-form" onSubmit={e => this.handleSubmit(e)}>
+               
+             <h3> REGISTER</h3>
+                <input 
+                 id="name"
+                 className="form-field"
+                 type="text"
+                 placeholder="Name"
+                 name="Name"
+                value={this.state.userName} 
+                onChange = { e => this.setUsername(e)} 
+                   />
+             <br/>
+
+
+                <input 
+                id="password"
+                className="form-field"
+                placeholder="Password"
+                name="Password"
+                value={this.state.password} 
+                onChange = { e => this.setPassword(e)} 
+                type='password'
+                />
+
+              <input 
+                id="email"
+                className="form-field"
+                placeholder="Email"
+                name="Email" 
+                type='email'
+                />
+
+
+                <br/>
+
+                <input id="button" type='submit' value='SignUp'/> {loginMessage}
+            </form>
+</div> 
+
+
+           </div>
     }
 }
